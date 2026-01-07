@@ -249,38 +249,34 @@ body {
     background: linear-gradient(to bottom, var(--gojo-black), #050505);
 }
 
-/* 讓留言板容器看起來像一個高級的控制面板 */
+/* --- 領域交流視窗：穩定版 --- */
+#messages {
+    padding: 80px 5%;
+    background: var(--gojo-black);
+}
+
 #cusdis_thread {
-    background: rgba(10, 10, 10, 0.8);
-    padding: 30px; /* 稍微縮小內邊距，把空間留給內容 */
-    border-radius: 20px;
-    border: 1px solid rgba(163, 112, 247, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    max-width: 900px;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
-    
-    /* 關鍵：將高度調高，確保留言框和按鈕能一次看完 */
-    min-height: 650px; 
-    
-    transition: 0.5s ease;
+    /* 移除 min-height 防止在某些瀏覽器消失 */
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(163, 112, 247, 0.3);
+}
+
+/* 確保嵌入的視窗高度足夠，且不會產生內部捲軸 */
+#cusdis_thread iframe {
+    width: 100% !important;
+    min-height: 550px !important; /* 這個高度通常剛好容納 名字+信箱+留言+按鈕 */
+    border: none !important;
 }
 
 /* 懸停時的虛式發光 */
 #cusdis_thread:hover {
     border-color: var(--gojo-blue); /* 或是保持紫色 rgba(163, 112, 247, 0.6) */
     box-shadow: 0 0 50px rgba(163, 112, 247, 0.1);
-}
-
-/* 確保裡面的 iframe 不要自己產生捲軸 */
-#cusdis_thread iframe {
-    width: 100% !important;
-    min-height: 600px !important;
-    border: none;
-}
-
-/* 修正標題與留言板的間距 */
-.comment-section .section-title {
-    margin-bottom: 20px;
 }
 
 .comment-note {
