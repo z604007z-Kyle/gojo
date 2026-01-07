@@ -307,6 +307,23 @@ body {
     font-family: 'Rajdhani', sans-serif;
 }
 
+.btn-primary {
+    padding: 12px 40px;
+    background: transparent;
+    border: 1px solid var(--gojo-blue);
+    color: var(--gojo-blue);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+.btn-primary:hover {
+    background: var(--gojo-blue);
+    color: #000;
+    box-shadow: 0 0 20px var(--gojo-blue);
+}
+
 /* 響應式調整 */
 @media (max-width: 768px) {
     .navbar { padding: 15px 20px; }
