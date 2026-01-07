@@ -3,38 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRO PLAYER | OFFICIAL PAGE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <title>GOJO | 最強術師．電競領域</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Rajdhani:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet"> <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">PLAYER_01</div>
+        <div class="logo">GOJO</div>
         <ul class="nav-links">
-            <li><a href="#stats">STATS</a></li>
-            <li><a href="#career">CAREER</a></li>
-            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="#domain">領域展開</a></li>
+            <li><a href="#術式分析">術式分析</a></li>
+            <li><a href="#timeline">無限時間軸</a></li>
+            <li><a href="#highlights">蒼・赫・茈</a></li>
+            <li><a href="#contact">帳號連結</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
+    <section id="domain" class="hero-section">
+        <div class="hero-bg-overlay"></div>
         <div class="hero-content">
-            <h1 class="big-name">FAKER</h1>
-            <p class="tagline">"THE UNKILLABLE DEMON KING"</p>
+            <h1 class="gojo-name">GOJO</h1>
+            <p class="slogan">「最強術師．電競領域」</p>
+            <p class="description">從召喚師峽谷到炙熱的CS戰場，以無下限的策略與精準的槍法，統御一切。</p>
         </div>
-        <img src="images/hero-player.png" alt="Player Image" class="player-img">
+        <img src="assets/images/gojo-hero.png" alt="Gojo Player" class="gojo-player-img">
     </section>
 
-    <section id="stats" class="stats-section">
-        <div class="stat-card">
-            <h2 class="counter" data-target="4">0</h2>
-            <p>WORLD TITLES</p>
+    <section id="術式分析" class="stats-section">
+        <h2 class="section-title">術式分析</h2>
+        <div class="stats-grid">
+            <div class="stat-card lol-stat">
+                <h3 class="game-title">LOL 生涯</h3>
+                <p class="stat-value counter" data-target="3">0</p>
+                <p class="stat-label">世界冠軍 (S賽)</p>
+            </div>
+            <div class="stat-card cs-stat">
+                <h3 class="game-title">CS:GO 巔峰</h3>
+                <p class="stat-value counter" data-target="1.28">0</p>
+                <p class="stat-label">KD Ratio</p>
+            </div>
+            <div class="stat-card lol-stat">
+                <h3 class="game-title">LOL LCK</h3>
+                <p class="stat-value counter" data-target="8">0</p>
+                <p class="stat-label">LCK 冠軍</p>
+            </div>
+            <div class="stat-card cs-stat">
+                <h3 class="game-title">CS:GO</h3>
+                <p class="stat-value counter" data-target="60">0</p>
+                <p class="stat-label">爆頭率 (%)</p>
+            </div>
         </div>
-        <div class="stat-card">
-            <h2 class="counter" data-target="10">0</h2>
-            <p>LCK TITLES</p>
-        </div>
-        </section>
+    </section>
 
     <script src="js/script.js"></script>
 </body>
