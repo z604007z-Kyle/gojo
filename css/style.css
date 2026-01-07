@@ -256,6 +256,57 @@ body {
     text-shadow: 0 0 20px rgba(255, 30, 86, 0.5);
 }
 
+/* 時間軸樣式 */
+.career-section { padding: 100px 5%; background: var(--gojo-dark); }
+
+.timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 40px;
+    position: relative;
+}
+
+.timeline-item { margin-bottom: 60px; position: relative; }
+
+.timeline-dot {
+    position: absolute;
+    left: -51px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.blue-glow { box-shadow: 0 0 15px var(--gojo-blue); background: var(--gojo-blue); }
+.red-glow { box-shadow: 0 0 15px var(--gojo-red); background: var(--gojo-red); }
+.purple-glow { box-shadow: 0 0 15px #A370F7; background: #A370F7; }
+
+.timeline-content h3 { color: var(--gojo-blue); font-family: 'Rajdhani', sans-serif; margin: 10px 0; }
+.timeline-content .year { font-weight: bold; color: rgba(255,255,255,0.5); font-family: 'Oswald'; }
+
+/* 高光媒體區 */
+.media-section { padding: 100px 5%; background: #000; }
+.media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1200px; margin: 0 auto; }
+
+.media-box { position: relative; overflow: hidden; border: 2px solid transparent; transition: 0.5s; }
+.blue-border { border-color: var(--gojo-blue); }
+.red-border { border-color: var(--gojo-red); }
+
+.media-box img { width: 100%; height: auto; display: block; filter: grayscale(50%); transition: 0.5s; }
+.media-box:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+.media-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: 10px 20px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
 /* 響應式調整 */
 @media (max-width: 768px) {
     .navbar { padding: 15px 20px; }
