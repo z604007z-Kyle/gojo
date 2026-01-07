@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. 數字跳動動畫 (你原本的邏輯，微調最終顯示) ---
     const counters = document.querySelectorAll('.counter');
 
     const animateCounter = (counter) => {
         const target = +counter.getAttribute('data-target');
-        const isDecimal = target % 1 !== 0; // 判斷是否為小數
-        const duration = 2000; // 動畫時間 2 秒
-        let start = 0;
+        const isDecimal = target % 1 !== 0; 
+        const duration = 2000; 
         let startTime = null;
 
-        const easeOutQuad = t => t * (2 - t); // 平滑的加速曲線
+        const easeOutQuad = t => t * (2 - t);
 
         const updateCount = (timestamp) => {
             if (!startTime) startTime = timestamp;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let currentCount;
             if (isDecimal) {
-                currentCount = (target * easedProgress).toFixed(2); // 小數點後兩位
+                currentCount = (target * easedProgress).toFixed(2);
             } else {
                 currentCount = Math.floor(target * easedProgress);
             }
@@ -26,25 +26,46 @@ document.addEventListener('DOMContentLoaded', () => {
             if (progress < 1) {
                 requestAnimationFrame(updateCount);
             } else {
-                counter.innerText = target.toFixed(isDecimal ? 2 : 0); // 確保最終顯示精確值
+                // 確保最終數值正確，不強加 .00 除非它真的是小數
+                counter.innerText = isDecimal ? target.toFixed(2) : target;
             }
         };
         requestAnimationFrame(updateCount);
     };
 
-    // 使用 Intersection Observer 偵測元素進入視窗才開始動畫
-    const observer = new IntersectionObserver((entries, observer) => {
+    const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 animateCounter(entry.target);
-                observer.unobserve(entry.target); // 動畫完成後停止觀察
+                counterObserver.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.5 // 當元素 50% 進入視窗時觸發
-    });
+    }, { threshold: 0.5 });
 
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // --- 2. 導覽列自動亮起 (Active Link On Scroll) ---
+    // 當使用者滑到特定區塊，導覽列對應的連結會發光 (像六眼偵測一樣)
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const navObserverOptions = {
+        threshold: 0.3 // 區塊佔據 30% 視窗時判定為當前區塊
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, navObserverOptions);
+
+    sections.forEach(section => navObserver.observe(section));
 });
