@@ -242,6 +242,45 @@ body {
     }
 }
 
+/* --- 領域交流 (留言板) 區塊美化 --- */
+
+.comment-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 留言板的外殼容器，加入發光感 */
+#cusdis_thread {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(163, 112, 247, 0.3); /* 淡淡的紫色邊框 */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease;
+}
+
+/* 當滑鼠移近留言區時，增加發光強度 (呼應虛式・茈的顏色) */
+#cusdis_thread:hover {
+    border-color: rgba(163, 112, 247, 0.8);
+    box-shadow: 0 0 40px rgba(163, 112, 247, 0.15);
+}
+
+/* 針對手機版的間距優化 */
+@media (max-width: 768px) {
+    .comment-section {
+        padding: 60px 20px !important;
+    }
+    
+    #cusdis_thread {
+        padding: 15px;
+    }
+}
+
+/* 修正導覽列點擊跳轉時的位移 (避免標題被 Navbar 遮住) */
+#messages {
+    scroll-margin-top: 80px;
+}
+
 /* 時間軸與其他 */
 .career-section { padding: 80px 5%; }
 .timeline-container { max-width: 800px; margin: 0 auto; border-left: 2px solid var(--gojo-blue); padding-left: 30px; }
