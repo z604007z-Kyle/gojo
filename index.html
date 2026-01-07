@@ -130,17 +130,23 @@
 
     <section id="messages" class="comment-section">
         <h2 class="section-title">領域交流</h2>
-        <p class="comment-note">—— 留下你的咒力殘穢 ——</p> <div style="max-width: 900px; margin: 0 auto;">
-            <div id="cusdis_thread"
-                data-host="https://cusdis.com"
-                data-app-id="9bb677c1-6ac7-4669-9d52-dd3ba198b6a2"
-                data-page-id="gojo_home_01"
-                data-page-url="https://z604007z-kyle.github.io/gojo/"
-                data-page-title="GOJO 最強術師"
-                data-theme="dark">
-            </div>
+        <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="9bb677c1-6ac7-4669-9d52-dd3ba198b6a2"
+            data-page-id="gojo_home_01"
+            data-page-url="https://z604007z-kyle.github.io/gojo/"
+            data-page-title="GOJO 最強術師"
+            data-theme="dark">
         </div>
+    
         <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        <script>
+          window.addEventListener('message', e => {
+            if (e.data.type === 'cusdis:height') {
+              document.getElementById('cusdis_thread').style.height = `${e.data.data}px`
+            }
+          })
+        </script>
     </section>
 
     <footer style="padding: 50px 5%; text-align: center; background: #000; border-top: 1px solid rgba(255,255,255,0.1);">
