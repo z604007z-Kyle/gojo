@@ -178,8 +178,8 @@ body {
 }
 
 /* --- 針對蒼・赫媒體區塊的精準調整 --- */
+/* --- 修正圖片裁切：讓 JPG 完整顯示 --- */
 
-/* 讓圖片維持 16:9 且不變形 */
 .media-box {
     position: relative;
     background: #000;
@@ -187,21 +187,24 @@ body {
     overflow: hidden;
     border: 2px solid rgba(255, 255, 255, 0.1);
     transition: all 0.4s ease;
+    display: flex;       /* 確保容器與圖片對齊 */
+    flex-direction: column;
 }
 
 .media-box img {
     width: 100%;
-    aspect-ratio: 16 / 9; /* 固定比例 */
-    object-fit: cover;    /* 裁切圖片以填滿 */
+    height: auto;        /* 關鍵：高度自動，不強制 16:9 */
     display: block;
-    opacity: 0.7;         /* 預設稍微暗一點，更有質感 */
+    opacity: 0.8;
     transition: 0.5s ease;
+    /* 移除 aspect-ratio: 16/9; */
+    /* 移除 object-fit: cover; */
 }
 
-/* 懸停效果：亮起來並放大 */
+/* 懸停效果：亮起來，稍微放大一點點就好，避免邊緣又被吃掉 */
 .media-box:hover img {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.02); 
 }
 
 /* 藍色邊框 (蒼) */
@@ -216,19 +219,27 @@ body {
     box-shadow: 0 0 25px rgba(255, 30, 86, 0.5);
 }
 
-/* 文字標籤樣式 */
+/* 文字標籤：建議不要用 absolute 壓在圖上，改放在圖下方或改用半透明遮罩 */
 .media-label {
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 15px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
     text-align: center;
     font-family: 'Rajdhani', sans-serif;
     font-weight: bold;
     font-size: 1.1rem;
     color: #fff;
-    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* 修正 Grid 確保在手機上圖片不會縮太小 */
+@media (max-width: 768px) {
+    .media-grid {
+        grid-template-columns: 1fr; /* 手機版改為單個排列，圖片才會大 */
+        gap: 30px;
+    }
 }
 
 /* 時間軸與其他 */
