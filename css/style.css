@@ -177,6 +177,60 @@ body {
     margin: 10px 0;
 }
 
+/* --- 針對蒼・赫媒體區塊的精準調整 --- */
+
+/* 讓圖片維持 16:9 且不變形 */
+.media-box {
+    position: relative;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.media-box img {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 固定比例 */
+    object-fit: cover;    /* 裁切圖片以填滿 */
+    display: block;
+    opacity: 0.7;         /* 預設稍微暗一點，更有質感 */
+    transition: 0.5s ease;
+}
+
+/* 懸停效果：亮起來並放大 */
+.media-box:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* 藍色邊框 (蒼) */
+.media-box.blue-border:hover {
+    border-color: var(--gojo-blue);
+    box-shadow: 0 0 25px rgba(0, 188, 212, 0.5);
+}
+
+/* 紅色邊框 (赫) */
+.media-box.red-border:hover {
+    border-color: var(--gojo-red);
+    box-shadow: 0 0 25px rgba(255, 30, 86, 0.5);
+}
+
+/* 文字標籤樣式 */
+.media-label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
 /* 時間軸與其他 */
 .career-section { padding: 80px 5%; }
 .timeline-container { max-width: 800px; margin: 0 auto; border-left: 2px solid var(--gojo-blue); padding-left: 30px; }
