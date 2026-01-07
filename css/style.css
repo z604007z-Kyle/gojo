@@ -195,10 +195,85 @@ body {
     50% { transform: translateX(-50%) translateY(-15px); }
 }
 
-/* 手機版適應 */
+/* --- 手機版與平板全面優化 --- */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* 手機版暫時隱藏選單以免擠亂 */
-    .gojo-name { font-size: 5rem; }
-    .media-grid { grid-template-columns: 1fr; }
-    .dream-container { flex-direction: column; text-align: center; }
+    /* 1. 確保網頁不會左右晃動 */
+    body, html {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    /* 2. 隱藏複雜的導覽選單，改為簡單佈局 */
+    .nav-links {
+        display: none; /* 如果之後要做漢堡選單再開啟 */
+    }
+    
+    .navbar {
+        justify-content: center; /* Logo 居中 */
+        padding: 10px;
+    }
+
+    /* 3. Hero 區塊高度與比例調整 */
+    .hero-section {
+        height: 100vh;
+        padding-top: 60px;
+    }
+
+    /* 4. 手機版大字體：縮小尺寸並確保在最前面 */
+    .gojo-name {
+        font-size: 5rem; /* 手機版字體縮小，避免爆出去 */
+        -webkit-text-stroke: 1px var(--gojo-blue);
+        top: 45%; /* 稍微往上移，留位置給按鈕 */
+        z-index: 10;
+        opacity: 0.9;
+    }
+
+    /* 5. 手機版照片：縮小高度防止遮擋所有內容 */
+    .gojo-player-img {
+        height: 60vh; /* 縮小照片高度 */
+        z-index: 5;
+    }
+
+    /* 6. 標語內容：確保在手機上清晰可見 */
+    .hero-content {
+        z-index: 15;
+        width: 90%;
+        margin-top: 150px; /* 將標語推到大字下方 */
+    }
+
+    .slogan {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        padding: 0 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* 限制描述行數，避免畫面過長 */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* 7. 下方數據卡片改為兩排或一排 */
+    .stats-grid {
+        grid-template-columns: 1fr; /* 手機版一條龍排列 */
+        gap: 20px;
+    }
+
+    .stat-value {
+        font-size: 3rem;
+    }
+
+    /* 8. 夢想區塊排列 */
+    .dream-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .dream-img {
+        max-width: 280px;
+    }
 }
