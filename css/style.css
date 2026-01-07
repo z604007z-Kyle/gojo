@@ -252,14 +252,17 @@ body {
 /* 讓留言板容器看起來像一個高級的控制面板 */
 #cusdis_thread {
     background: rgba(10, 10, 10, 0.8);
-    padding: 40px;
+    padding: 30px; /* 稍微縮小內邊距，把空間留給內容 */
     border-radius: 20px;
     border: 1px solid rgba(163, 112, 247, 0.2);
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 1), 0 10px 40px rgba(0, 0, 0, 0.5);
-    max-width: 900px !important; /* 稍微放寬一點，視窗比較舒服 */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
     margin: 0 auto;
-    min-height: 500px; /* 預設一個高度，避免載入時畫面跳動 */
-    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 關鍵：將高度調高，確保留言框和按鈕能一次看完 */
+    min-height: 650px; 
+    
+    transition: 0.5s ease;
 }
 
 /* 懸停時的虛式發光 */
@@ -268,9 +271,11 @@ body {
     box-shadow: 0 0 50px rgba(163, 112, 247, 0.1);
 }
 
-/* 針對留言板內部的捲軸美化 (如果留言很多時) */
+/* 確保裡面的 iframe 不要自己產生捲軸 */
 #cusdis_thread iframe {
-    color-scheme: dark; /* 強制讓內部組件使用深色邏輯 */
+    width: 100% !important;
+    min-height: 600px !important;
+    border: none;
 }
 
 /* 修正標題與留言板的間距 */
