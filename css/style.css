@@ -1,10 +1,15 @@
 :root {
-    --gojo-blue: rgb(0, 188, 212); /* 蒼 */
-    --gojo-red: #FF1E56;         /* 赫 */
+    --gojo-blue: rgb(0, 188, 212);
+    --gojo-red: #FF1E56;
     --gojo-dark: #0A1128;
     --gojo-black: #010101;
     --text-light: #E0E0E0;
     --text-accent: #FFFFFF;
+}
+
+/* 基礎設定 */
+html {
+    scroll-behavior: smooth; /* 平滑滾動 */
 }
 
 body {
@@ -13,7 +18,7 @@ body {
     font-family: 'Inter', 'Noto Sans TC', sans-serif;
     margin: 0;
     line-height: 1.7;
-    overflow-x: hidden; /* 防止橫向滾動 */
+    overflow-x: hidden;
 }
 
 /* 全域標題 */
@@ -71,7 +76,7 @@ body {
     font-family: 'Rajdhani', sans-serif;
     font-size: 16px;
     letter-spacing: 1px;
-    transition: color 0.3s, text-shadow 0.3s;
+    transition: 0.3s;
     text-transform: uppercase;
 }
 .nav-links a:hover {
@@ -79,7 +84,7 @@ body {
     text-shadow: 0 0 10px var(--gojo-blue);
 }
 
-/* Hero 區 - 領域展開 */
+/* Hero 區 */
 .hero-section {
     height: 100vh;
     position: relative;
@@ -92,7 +97,7 @@ body {
     overflow: hidden;
 }
 
-.hero-bg-overlay { /* 模擬無下限背景 */
+.hero-bg-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -102,53 +107,42 @@ body {
     animation: pulseGojo 10s infinite alternate;
     z-index: 1;
 }
+
 @keyframes pulseGojo {
     from { opacity: 0.8; transform: scale(1); }
     to { opacity: 1; transform: scale(1.05); }
 }
 
 .gojo-player-img {
-    height: 95vh; /* 讓圖片更大 */
+    height: 95vh;
     position: absolute;
-    bottom: 0; /* 貼齊底部 */
+    bottom: 0;
     z-index: 3;
-    filter: drop-shadow(0 0 80px rgba(0, 188, 212, 0.6)); /* 蒼的陰影 */
+    filter: drop-shadow(0 0 80px rgba(0, 188, 212, 0.6));
     pointer-events: none;
     animation: floatPlayer 5s infinite ease-in-out;
 }
+
 @keyframes floatPlayer {
-    0% { transform: translateY(0px); }
+    0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-
-.hero-content {
-    position: relative;
-    z-index: 5; /* 確保文字在最上層 */
-    max-width: 900px;
-    padding: 0 20px;
 }
 
 .gojo-name {
-    font-family: 'Oswald', 'Zen Kurenaido', sans-serif; /* 結合英日文 */
+    font-family: 'Oswald', 'Zen Kurenaido', sans-serif;
     font-size: clamp(8rem, 18vw, 15rem);
     line-height: 0.8;
     color: transparent;
-    -webkit-text-stroke: 2px var(--gojo-blue); /* 描邊效果 */
-    text-stroke: 2px var(--gojo-blue);
-    text-shadow: 0 0 30px rgba(0, 188, 212, 0.5); /* 蒼的光暈 */
+    -webkit-text-stroke: 2px var(--gojo-blue);
+    text-shadow: 0 0 30px rgba(0, 188, 212, 0.5);
     margin: 0;
-    animation: glitchText 1.5s infinite alternate; /* 輕微故障效果 */
-}
-@keyframes glitchText {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(2px) scaleY(1.02); }
-    50% { transform: translateX(-2px) scaleY(0.98); }
-    75% { transform: translateX(2px) scaleY(1.02); }
-    100% { transform: translateX(0); }
+    animation: glitchText 1.5s infinite alternate;
 }
 
+@keyframes glitchText {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-2px) scaleY(0.98); }
+}
 
 .slogan {
     font-family: 'Rajdhani', sans-serif;
@@ -156,23 +150,16 @@ body {
     color: var(--gojo-red);
     letter-spacing: 5px;
     margin-top: 10px;
-    text-shadow: 0 0 15px rgba(255, 30, 86, 0.4); /* 赫的光暈 */
+    text-shadow: 0 0 15px rgba(255, 30, 86, 0.4);
 }
 
-.description {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 30px auto;
-    color: var(--text-light);
-}
-
-/* 術式分析 - 數據儀表板 */
+/* 術式分析 */
 .stats-section {
     padding: 150px 5%;
-    background-color: var(--gojo-black); /* 更深的背景 */
+    background-color: var(--gojo-black);
     text-align: center;
-    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); /* 更具侵略性的斜切 */
-    margin-top: -100px; /* 與上方區塊重疊，增加動態感 */
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+    margin-top: -100px;
     position: relative;
     z-index: 2;
 }
@@ -186,47 +173,19 @@ body {
 }
 
 .stat-card {
-    background-color: rgba(255, 255, 255, 0.05); /* 半透明卡片 */
+    background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 188, 212, 0.2);
     padding: 40px 20px;
     border-radius: 5px;
-    transition: transform 0.4s ease, border-color 0.4s ease;
+    transition: 0.4s;
     position: relative;
     overflow: hidden;
 }
-.stat-card::before { /* 能量脈動效果 */
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 188, 212, 0.1) 0%, transparent 70%);
-    opacity: 0;
-    animation: fadePulse 5s infinite;
-    pointer-events: none;
-    z-index: 0;
-}
-@keyframes fadePulse {
-    0% { opacity: 0; transform: scale(0); }
-    50% { opacity: 0.15; transform: scale(1); }
-    100% { opacity: 0; transform: scale(1.5); }
-}
-
 
 .stat-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--gojo-red); /* 赫的觸發 */
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--gojo-red);
     box-shadow: 0 0 30px rgba(255, 30, 86, 0.3);
-}
-
-.game-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.5rem;
-    color: var(--text-accent);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .stat-value {
@@ -235,30 +194,10 @@ body {
     color: var(--gojo-blue);
     margin: 0 0 10px;
     font-weight: 700;
-    text-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
 }
 
-.stat-label {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    opacity: 0.8;
-}
-
-/* 針對 LOL 數據卡片額外樣式 */
-.lol-stat .stat-value {
-    color: var(--gojo-blue);
-    text-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
-}
-
-/* 針對 CS 數據卡片額外樣式 */
-.cs-stat .stat-value {
-    color: var(--gojo-red); /* CS 數據用赫的顏色 */
-    text-shadow: 0 0 20px rgba(255, 30, 86, 0.5);
-}
-
-/* 時間軸樣式 */
+/* 時間軸 */
 .career-section { padding: 100px 5%; background: var(--gojo-dark); }
-
 .timeline-container {
     max-width: 800px;
     margin: 0 auto;
@@ -266,9 +205,7 @@ body {
     padding-left: 40px;
     position: relative;
 }
-
 .timeline-item { margin-bottom: 60px; position: relative; }
-
 .timeline-dot {
     position: absolute;
     left: -51px;
@@ -276,40 +213,52 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #fff;
 }
-
 .blue-glow { box-shadow: 0 0 15px var(--gojo-blue); background: var(--gojo-blue); }
 .red-glow { box-shadow: 0 0 15px var(--gojo-red); background: var(--gojo-red); }
 .purple-glow { box-shadow: 0 0 15px #A370F7; background: #A370F7; }
 
-.timeline-content h3 { color: var(--gojo-blue); font-family: 'Rajdhani', sans-serif; margin: 10px 0; }
-.timeline-content .year { font-weight: bold; color: rgba(255,255,255,0.5); font-family: 'Oswald'; }
-
-/* 高光媒體區 */
+/* 媒體區 */
 .media-section { padding: 100px 5%; background: #000; }
-.media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1200px; margin: 0 auto; }
-
+.media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 .media-box { position: relative; overflow: hidden; border: 2px solid transparent; transition: 0.5s; }
 .blue-border { border-color: var(--gojo-blue); }
 .red-border { border-color: var(--gojo-red); }
-
-.media-box img { width: 100%; height: auto; display: block; filter: grayscale(50%); transition: 0.5s; }
+.media-box img { width: 100%; filter: grayscale(50%); transition: 0.5s; }
 .media-box:hover img { filter: grayscale(0%); transform: scale(1.05); }
 
-.media-label {
+/* 夢想區塊 (彭于晏區塊) */
+.dream-section {
+    padding: 150px 5%;
+    background: linear-gradient(180deg, #000 0%, #0d051a 100%);
+}
+.dream-img {
+    width: 100%;
+    max-width: 450px;
+    z-index: 2;
+    filter: drop-shadow(0 0 30px rgba(163, 112, 247, 0.4));
+    transition: 0.5s ease;
+}
+.dream-img:hover {
+    transform: translateY(-20px) scale(1.05); /* 增加互動感 */
+}
+.purple-orb {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    background: rgba(0,0,0,0.8);
-    color: #fff;
-    padding: 10px 20px;
-    font-family: 'Rajdhani', sans-serif;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(163, 112, 247, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulsePurple 4s infinite alternate;
 }
 
+@keyframes pulsePurple {
+    from { transform: scale(1); opacity: 0.5; }
+    to { transform: scale(1.3); opacity: 0.8; }
+}
+
+/* 按鈕 */
 .btn-primary {
     padding: 12px 40px;
-    background: transparent;
     border: 1px solid var(--gojo-blue);
     color: var(--gojo-blue);
     text-decoration: none;
@@ -324,109 +273,11 @@ body {
     box-shadow: 0 0 20px var(--gojo-blue);
 }
 
-/* 夢想區塊：虛式・茈 樣式 */
-.dream-section {
-    padding: 150px 5%;
-    background: linear-gradient(180deg, #000 0%, #0d051a 100%);
-    overflow: hidden;
-}
-
-.dream-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.dream-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.dream-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.5rem;
-    color: #fff;
-    margin: 20px 0;
-}
-
-.dream-description {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.8;
-}
-
-.dream-tags {
-    margin-top: 25px;
-    display: flex;
-    gap: 15px;
-}
-
-.dream-tags span {
-    color: #A370F7;
-    border: 1px solid #A370F7;
-    padding: 5px 15px;
-    font-size: 0.9rem;
-    font-family: 'Rajdhani', sans-serif;
-}
-
-.dream-image-wrapper {
-    flex: 1;
-    min-width: 300px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.dream-img {
-    width: 100%;
-    max-width: 450px;
-    z-index: 2;
-    filter: drop-shadow(0 0 30px rgba(163, 112, 247, 0.4));
-}
-
-.purple-orb {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(163, 112, 247, 0.3) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 1;
-    animation: pulsePurple 4s infinite alternate;
-}
-
-@keyframes pulsePurple {
-    from { transform: scale(1); opacity: 0.5; }
-    to { transform: scale(1.3); opacity: 0.8; }
-}
-
-/* 手機版適應 */
-@media (max-width: 768px) {
-    .dream-container { gap: 40px; text-align: center; }
-    .dream-tags { justify-content: center; }
-}
-
-
 /* 響應式調整 */
 @media (max-width: 768px) {
-    .navbar { padding: 15px 20px; }
-    .nav-links { gap: 15px; }
-    .hero-section { height: 90vh; }
-    .gojo-name { font-size: clamp(6rem, 15vw, 10rem); }
-    .gojo-player-img { height: 80vh; }
-    .slogan { font-size: clamp(1.2rem, 2.5vw, 1.8rem); }
-    .stats-section { padding: 80px 5%; margin-top: -50px; }
-    .stat-card { padding: 30px 15px; }
-    .stat-value { font-size: 3.5rem; }
-}
-
-@media (max-width: 480px) {
-    .navbar { flex-direction: column; gap: 10px; }
-    .nav-links { flex-wrap: wrap; justify-content: center; }
-    .gojo-name { -webkit-text-stroke: 1px var(--gojo-blue); text-stroke: 1px var(--gojo-blue); }
-    .stats-grid { grid-template-columns: 1fr; }
+    .navbar { width: 100%; padding: 10px; flex-direction: column; }
+    .nav-links { gap: 10px; font-size: 12px; }
+    .gojo-name { font-size: 5rem; }
+    .media-grid { grid-template-columns: 1fr; }
+    .dream-container { text-align: center; }
 }
