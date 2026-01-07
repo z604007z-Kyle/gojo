@@ -256,6 +256,14 @@ body {
     to { transform: scale(1.3); opacity: 0.8; }
 }
 
+/* 當前所在區塊的導覽文字發光 */
+.nav-links a.active {
+    color: var(--gojo-blue);
+    text-shadow: 0 0 15px var(--gojo-blue);
+    font-weight: bold;
+    border-bottom: 2px solid var(--gojo-blue);
+}
+
 /* 按鈕 */
 .btn-primary {
     padding: 12px 40px;
